@@ -1,16 +1,18 @@
 <html>
     <head>
         <title>Etch a Sketch Project</title>
+        <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
         
+        <h1>Etch a Sketch!</h1>
         <button id="reset">Reset the grid</button>
         <div class="container"></div>
 
         <script>
 
             const container = document.querySelector(".container");
-            container.setAttribute("style", "display: grid; grid-template-columns: repeat(16, auto); width: 500px; height: 500px;"); 
+            container.setAttribute("style", "display: grid; grid-template-columns: repeat(16, auto); width: 500px; height: 500px; margin: 50px auto"); 
             
             const reset = document.querySelector("#reset");
             
@@ -26,9 +28,7 @@
                         let gridbox = document.createElement('div');
                         gridbox.style.width = "auto";
                         gridbox.style.height = "auto";
-                        gridbox.style.backgroundColor = "white";
                         gridbox.style.border = "1px solid black";
-                        gridbox.classList.add("grid-item");
                         gridbox.style.gridRow = i;
                         container.appendChild(gridbox);
                     }
@@ -43,7 +43,7 @@
                     while (container.firstChild) {
                     container.removeChild(container.lastChild);
                     }
-                    container.setAttribute("style", "display: grid; grid-template-columns: repeat(" + squares +", auto); width: 500px; height: 500px;");
+                    container.setAttribute("style", "display: grid; grid-template-columns: repeat(" + squares +", auto); width: 500px; height: 500px; margin: 50px auto");
                     drawGrid(squares, squares);
                 } else {
                     alert("Sorry, not a valid input. Please try again with a number between 1 and 100.");
