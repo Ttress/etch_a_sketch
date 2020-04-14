@@ -4,13 +4,20 @@
     </head>
     <body>
         
+        <button id="reset">Reset the grid</button>
         <div class="container"></div>
 
         <script>
 
             const container = document.querySelector(".container");
-            container.setAttribute("style", "display: grid; grid-template-columns: repeat(16, auto); width: 500px; height: 500px;");
+            container.setAttribute("style", "display: grid; grid-template-columns: repeat(16, auto); width: 500px; height: 500px;"); 
             
+            const reset = document.querySelector("#reset");
+            
+            container.addEventListener("mouseover", function(e) {
+                e.target.style.backgroundColor = "black";
+            })
+                       
 
             function drawGrid(columns, rows) {
                 for (let i = 1; i <= rows; i++) {
@@ -27,9 +34,24 @@
                     }
                 }
             }
-            
-            
+
             drawGrid(16, 16);
+            
+            reset.addEventListener("click", function() {
+                const squares = prompt("How many squares per side? Between 1 and 100.");
+                if (squares <= 100 && squares > 0) {
+                    while (container.firstChild) {
+                    container.removeChild(container.lastChild);
+                    }
+                    container.setAttribute("style", "display: grid; grid-template-columns: repeat(" + squares +", auto); width: 500px; height: 500px;");
+                    drawGrid(squares, squares);
+                } else {
+                    alert("Sorry, not a valid input. Please try again with a number between 1 and 100.");
+                }    
+            })
+            
+            
+            
             
         </script>
     </body>
