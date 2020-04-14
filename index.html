@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Etch a Sketch Project</title>
+    </head>
+    <body>
+        
+        <div class="container"></div>
+
+        <script>
+
+            const container = document.querySelector(".container");
+            container.setAttribute("style", "display: grid; grid-template-columns: repeat(16, auto); width: 500px; height: 500px;");
+            
+
+            function drawGrid(columns, rows) {
+                for (let i = 1; i <= rows; i++) {
+
+                    for (let j = 1; j <= columns; j++) {
+                        let gridbox = document.createElement('div');
+                        gridbox.style.width = "auto";
+                        gridbox.style.height = "auto";
+                        gridbox.style.backgroundColor = "white";
+                        gridbox.style.border = "1px solid black";
+                        gridbox.classList.add("grid-item");
+                        gridbox.style.gridRow = i;
+                        container.appendChild(gridbox);
+                    }
+                }
+            }
+            
+            
+            drawGrid(16, 16);
+            
+        </script>
+    </body>
+</html>
